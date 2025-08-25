@@ -6,25 +6,25 @@
 
 @layer base {
   :root {
-    /* Clean Professional Palette */
+    /* Sophisticated Executive Palette */
     --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    --foreground: 220 13% 18%;
     
-    /* Primary - Modern Indigo */
-    --primary: 234 89% 74%;
+    /* Primary - Executive Navy */
+    --primary: 220 100% 20%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 234 89% 80%;
-    --primary-lighter: 234 89% 85%;
+    --primary-light: 220 60% 35%;
+    --primary-lighter: 220 40% 50%;
     
-    /* Secondary - Soft Gray */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 215 25% 27%;
-    --secondary-light: 220 14% 98%;
+    /* Secondary - Premium Neutral */
+    --secondary: 214 15% 91%;
+    --secondary-foreground: 220 13% 18%;
+    --secondary-light: 214 15% 95%;
     
-    /* Accent - Elegant Teal */
-    --accent: 174 100% 29%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 174 100% 35%;
+    /* Accent - Corporate Gold */
+    --accent: 45 93% 47%;
+    --accent-foreground: 220 13% 18%;
+    --accent-light: 45 93% 55%;
     
     /* Neutral Palette */
     --muted: 220 13% 95%;
@@ -45,18 +45,18 @@
     --warning: 36 100% 50%;
     --warning-foreground: 0 0% 98%;
     
-    /* Refined Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(234 89% 74%) 0%, hsl(234 89% 80%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(220 14% 96%) 0%, hsl(220 14% 98%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 13% 98%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(234 89% 74%) 0%, hsl(234 89% 68%) 50%, hsl(174 100% 29%) 100%);
+    /* Executive Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 20%) 0%, hsl(220 60% 35%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(214 15% 91%) 0%, hsl(214 15% 95%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(214 15% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 12%) 0%, hsl(220 100% 20%) 50%, hsl(220 60% 35%) 100%);
     
-    /* Elegant Shadows */
-    --shadow-sm: 0 1px 3px 0 hsl(215 25% 27% / 0.08);
-    --shadow-md: 0 4px 12px -2px hsl(215 25% 27% / 0.12);
-    --shadow-lg: 0 10px 25px -5px hsl(215 25% 27% / 0.15);
-    --shadow-xl: 0 20px 40px -10px hsl(215 25% 27% / 0.18);
-    --shadow-glow: 0 0 0 1px hsl(234 89% 74% / 0.1);
+    /* Professional Shadows */
+    --shadow-sm: 0 1px 3px 0 hsl(220 13% 18% / 0.08);
+    --shadow-md: 0 4px 16px -4px hsl(220 13% 18% / 0.12);
+    --shadow-lg: 0 12px 32px -8px hsl(220 13% 18% / 0.15);
+    --shadow-xl: 0 24px 48px -12px hsl(220 13% 18% / 0.18);
+    --shadow-glow: 0 0 0 1px hsl(45 93% 47% / 0.15);
     
     /* Smooth Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -203,11 +203,19 @@
   }
 
   .hero-text {
-    @apply text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight;
+    @apply text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight;
   }
 
   .subtitle-text {
-    @apply text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light;
+    @apply text-lg lg:text-xl text-muted-foreground leading-relaxed font-normal;
+  }
+
+  .section-title {
+    @apply text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight;
+  }
+
+  .card-title {
+    @apply text-xl lg:text-2xl font-semibold leading-tight;
   }
 
   .animate-on-scroll {

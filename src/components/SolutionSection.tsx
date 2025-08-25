@@ -46,42 +46,42 @@ const SolutionSection = () => {
   return (
     <section className="section-padding bg-background">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-primary-foreground">
-            <Sparkles className="h-4 w-4 mr-2" />
-            Your Procurement Co-Pilot
-          </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-6 py-3 bg-gradient-primary text-white rounded-full mb-8 shadow-lg">
+            <Sparkles className="h-5 w-5 mr-2" />
+            <span className="font-semibold">Your Procurement Co-Pilot</span>
+          </div>
+          <h2 className="section-title text-foreground mb-6">
             The Complete Procurement 
             <span className="text-gradient-primary block">Solution</span>
           </h2>
-          <p className="subtitle-text max-w-3xl mx-auto">
+          <p className="subtitle-text max-w-4xl mx-auto">
             Transform your procurement process with AI-powered automation, global vendor networks, and guaranteed results.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             return (
-              <div key={index} className="feature-card group">
-                <div className="mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:shadow-glow transition-smooth">
-                    <Icon className="h-8 w-8 text-white" />
+              <div key={index} className="bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-elegant group">
+                <div className="mb-8">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:shadow-glow transition-elegant shadow-lg">
+                    <Icon className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">
+                  <h3 className="card-title text-foreground mb-4">
                     {solution.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-muted-foreground leading-relaxed mb-6">
                     {solution.description}
                   </p>
                 </div>
                 
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                      <CheckCircle className="h-4 w-4 text-accent mr-2 flex-shrink-0" />
-                      {feature}
+                    <li key={featureIndex} className="flex items-center text-muted-foreground">
+                      <CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" />
+                      <span className="font-medium">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -90,12 +90,12 @@ const SolutionSection = () => {
           })}
         </div>
         
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center px-8 py-4 bg-gradient-secondary rounded-xl text-white">
-            <Sparkles className="h-6 w-6 mr-3" />
+        <div className="text-center mt-20">
+          <div className="inline-flex items-center px-10 py-6 bg-gradient-secondary rounded-2xl shadow-xl border border-border">
+            <Sparkles className="h-8 w-8 mr-4 text-accent" />
             <div className="text-left">
-              <div className="font-semibold text-lg">First-of-its-kind Pricing Engine</div>
-              <div className="text-secondary-foreground/80">Paste a product URL → Get instant price estimates</div>
+              <div className="font-bold text-xl text-foreground">First-of-its-kind Pricing Engine</div>
+              <div className="text-muted-foreground mt-1">Paste a product URL → Get instant price estimates</div>
             </div>
           </div>
         </div>

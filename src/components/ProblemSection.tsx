@@ -30,47 +30,47 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section className="section-padding bg-gradient-subtle">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-4 py-2 bg-destructive/10 rounded-full mb-6">
+            <AlertCircle className="h-4 w-4 text-destructive mr-2" />
+            <span className="text-destructive font-medium">Critical Business Challenges</span>
+          </div>
+          <h2 className="section-title text-foreground mb-6">
             The Corporate Procurement 
             <span className="text-gradient-primary block">Challenge</span>
           </h2>
-          <p className="subtitle-text max-w-3xl mx-auto">
+          <p className="subtitle-text max-w-4xl mx-auto">
             Traditional procurement processes are broken. Here's what's costing your business time and money.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
-              <div key={index} className="feature-card group">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center group-hover:bg-destructive/20 transition-smooth">
-                      <Icon className="h-6 w-6 text-destructive" />
-                    </div>
+              <div key={index} className="bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-elegant group">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-20 h-20 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:bg-destructive/20 transition-elegant">
+                    <Icon className="h-10 w-10 text-destructive" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
-                      {problem.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {problem.description}
-                    </p>
-                  </div>
+                  <h3 className="card-title text-foreground mb-4">
+                    {problem.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {problem.description}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
         
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center px-6 py-3 bg-destructive/10 rounded-full">
-            <AlertCircle className="h-5 w-5 text-destructive mr-2" />
-            <span className="text-destructive font-medium">
+        <div className="text-center">
+          <div className="inline-flex items-center px-8 py-4 bg-destructive/10 rounded-2xl border border-destructive/20">
+            <AlertCircle className="h-6 w-6 text-destructive mr-3" />
+            <span className="text-destructive font-semibold text-lg">
               These inefficiencies cost businesses an average of 15-25% in unnecessary procurement expenses
             </span>
           </div>
