@@ -20,14 +20,14 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 leading-tight animate-fade-in">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight animate-fade-in">
             Revolutionizing Corporate 
             <span className="block bg-gradient-to-r from-accent via-accent-light to-white bg-clip-text text-transparent">
               Procurement
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-4xl mx-auto text-white/90 font-medium animate-fade-in" style={{animationDelay: '0.2s'}}>
+          <p className="text-base md:text-lg lg:text-xl mb-8 md:mb-12 max-w-4xl mx-auto text-white/90 font-medium animate-fade-in" style={{animationDelay: '0.2s'}}>
             Get the best vendor prices, faster turnaround, and complete transparency—without weeks of negotiations.
           </p>
           

@@ -1,19 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50 animate-fade-in">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-fade-in ${
+      isScrolled 
+        ? 'bg-background/95 backdrop-blur-lg border-b border-border/50 shadow-lg' 
+        : 'bg-transparent'
+    }`}>
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl md:text-2xl font-bold text-foreground">
+            <h1 className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-foreground' : 'text-white'
+            }`}>
               ProcurAI
             </h1>
           </div>
@@ -21,19 +37,29 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#problem" className="text-muted-foreground hover:text-foreground transition-elegant">
+              <a href="#problem" className={`transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}>
                 Problem
               </a>
-              <a href="#solution" className="text-muted-foreground hover:text-foreground transition-elegant">
+              <a href="#solution" className={`transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}>
                 Solution
               </a>
-              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-elegant">
+              <a href="#how-it-works" className={`transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}>
                 How It Works
               </a>
-              <a href="#benefits" className="text-muted-foreground hover:text-foreground transition-elegant">
+              <a href="#benefits" className={`transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}>
                 Benefits
               </a>
-              <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-elegant">
+              <a href="#testimonials" className={`transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}>
                 Testimonials
               </a>
             </div>
@@ -50,7 +76,9 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-muted-foreground hover:text-foreground focus:outline-none focus:text-foreground transition-elegant"
+              className={`focus:outline-none transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+              }`}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
