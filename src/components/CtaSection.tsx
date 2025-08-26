@@ -3,7 +3,7 @@ import { ArrowRight, Zap, Clock, Shield } from "lucide-react";
 
 const CtaSection = () => {
   return (
-    <section className="section-padding bg-gradient-hero text-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-hero text-white relative overflow-hidden animate-fade-in">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.1)_0%,transparent_50%)]"></div>

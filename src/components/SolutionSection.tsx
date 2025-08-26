@@ -44,7 +44,7 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background animate-fade-in">
       <div className="container-custom">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-6 py-3 bg-gradient-primary text-white rounded-full mb-8 shadow-lg">

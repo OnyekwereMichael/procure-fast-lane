@@ -30,7 +30,7 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-subtle">
+    <section className="section-padding bg-gradient-subtle animate-fade-in">
       <div className="container-custom">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-destructive/10 rounded-full mb-6">

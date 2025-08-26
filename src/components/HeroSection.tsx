@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 md:pt-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1)_0%,transparent_50%)]"></div>
@@ -20,21 +20,21 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <h1 className="hero-text mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 leading-tight animate-fade-in">
             Revolutionizing Corporate 
             <span className="block bg-gradient-to-r from-accent via-accent-light to-white bg-clip-text text-transparent">
               Procurement
             </span>
           </h1>
           
-          <p className="subtitle-text mb-12 max-w-4xl mx-auto text-white/90 font-medium">
+          <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-4xl mx-auto text-white/90 font-medium animate-fade-in" style={{animationDelay: '0.2s'}}>
             Get the best vendor prices, faster turnaround, and complete transparency—without weeks of negotiations.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-12 md:mb-16 animate-fade-in" style={{animationDelay: '0.4s'}}>
             <Button 
               size="lg" 
-              className="btn-primary px-10 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl"
+              className="btn-primary px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl"
             >
               Get Started – Try a Pilot Project
               <ArrowRight className="ml-3 h-5 w-5" />
@@ -43,7 +43,7 @@ const HeroSection = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="px-10 py-4 text-lg font-semibold rounded-xl border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-elegant"
+              className="px-6 md:px-10 py-3 md:py-4 text-base md:text-lg font-semibold rounded-xl border-2 border-white/40 text-white bg-white/5 hover:bg-white/15 hover:border-white/60 backdrop-blur-sm transition-elegant"
             >
               <Play className="mr-3 h-5 w-5" />
               Watch Demo
