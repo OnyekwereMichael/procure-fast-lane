@@ -1,3 +1,4 @@
+import { steps } from "@/lib/constants/dummy";
 import { 
   Upload, 
   Brain, 
@@ -7,44 +8,6 @@ import {
 } from "lucide-react";
 
 const HowItWorksSection = () => {
-  const steps = [
-    {
-      number: 1,
-      icon: Upload,
-      title: "Post Your Requirement",
-      description: "Upload specifications or simply paste a product URL to get started.",
-      detail: "Our platform accepts various formats including RFQs, product links, or detailed specifications."
-    },
-    {
-      number: 2,
-      icon: Brain,
-      title: "AI Price Suggestion",
-      description: "Get instant preliminary pricing estimates powered by market intelligence.",
-      detail: "Our AI analyzes millions of data points to provide accurate price ranges within seconds."
-    },
-    {
-      number: 3,
-      icon: MessageSquare,
-      title: "Automated Negotiations",
-      description: "Our system handles negotiations with multiple pre-vetted vendors simultaneously.",
-      detail: "No more back-and-forth emails. Our AI manages the entire negotiation process for you."
-    },
-    {
-      number: 4,
-      icon: Clock,
-      title: "48-Hour Results",
-      description: "Receive 3-5 best vendor quotes with full transparency and recommendations.",
-      detail: "Complete vendor profiles, pricing breakdowns, and delivery timelines included."
-    },
-    {
-      number: 5,
-      icon: CheckCircle2,
-      title: "Finalize & Execute",
-      description: "Choose your preferred supplier and proceed to execution with confidence.",
-      detail: "Seamless handoff with contract management and performance tracking included."
-    }
-  ];
-
   return (
     <section className="section-padding bg-gradient-subtle animate-fade-in">
       <div className="container-custom">
@@ -54,15 +17,14 @@ const HowItWorksSection = () => {
             <span className="text-primary font-semibold">Streamlined Process</span>
           </div>
           <h2 className="section-title text-foreground mb-6">
-            How It 
-            <span className="text-gradient-primary"> Works</span>
+         How It Works - Step by Step
           </h2>
-          <p className="subtitle-text max-w-4xl mx-auto">
+          <p className="subtitle-text max-w-2xl mx-auto">
             From requirement to supplier selection in just 5 simple steps. Our automated process saves you weeks of work.
           </p>
         </div>
         
-        <div className="max-w-5xl mx-auto">
+        <div className=" mx-auto">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isLast = index === steps.length - 1;

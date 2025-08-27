@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 md:pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 md:pt-28">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1)_0%,transparent_50%)]"></div>
@@ -20,9 +20,9 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight animate-fade-in">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-12 animate-fade-in">
             Revolutionizing Corporate 
-            <span className="block bg-gradient-to-r from-accent via-accent-light to-white bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-accent via-accent-light to-white bg-clip-text text-transparent mt-1">
               Procurement
             </span>
           </h1>
@@ -51,7 +51,7 @@ const HeroSection = () => {
           </div>
           
           {/* Executive Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16 border-t border-white/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16 border-t border-white/20 mb-10">
             <div className="text-center group">
               <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant">48h</div>
               <div className="text-white/80 font-medium">Turnaround Guarantee</div>
@@ -69,11 +69,11 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center backdrop-blur-sm">
           <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

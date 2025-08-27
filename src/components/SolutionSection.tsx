@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { solutions } from "@/lib/constants/dummy";
 import { 
   Globe, 
   Zap, 
@@ -10,41 +11,10 @@ import {
 } from "lucide-react";
 
 const SolutionSection = () => {
-  const solutions = [
-    {
-      icon: Globe,
-      title: "Global Vendor Network",
-      description: "Pre-vetted, compliance-checked suppliers from around the world.",
-      features: ["Verified credentials", "Quality assessments", "Financial stability checks"]
-    },
-    {
-      icon: Zap,
-      title: "Automated Negotiation Engine",
-      description: "Multiple vendor negotiations running in parallel automatically.",
-      features: ["AI-powered negotiations", "Real-time bidding", "Optimal price discovery"]
-    },
-    {
-      icon: Clock,
-      title: "48-Hour Turnaround",
-      description: "Receive 3–5 best quotes within 48 hours guaranteed.",
-      features: ["Fast response times", "Priority processing", "Instant notifications"]
-    },
-    {
-      icon: Brain,
-      title: "AI Market Intelligence",
-      description: "Benchmark pricing using global market data and trends.",
-      features: ["Price predictions", "Market analysis", "Cost optimization"]
-    },
-    {
-      icon: BarChart3,
-      title: "Transparency Dashboard",
-      description: "Track negotiations, savings, and vendor credibility in real-time.",
-      features: ["Live tracking", "Performance metrics", "Detailed analytics"]
-    }
-  ];
+  
 
   return (
-    <section className="section-padding bg-background animate-fade-in">
+    <section className=" bg-background animate-fade-in">
       <div className="container-custom">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-6 py-3 bg-gradient-primary text-white rounded-full mb-8 shadow-lg">
@@ -52,10 +22,10 @@ const SolutionSection = () => {
             <span className="font-semibold">Your Procurement Co-Pilot</span>
           </div>
           <h2 className="section-title text-foreground mb-6">
-            The Complete Procurement 
-            <span className="text-gradient-primary block">Solution</span>
+            The Complete Procurement Solution
+            {/* <span className="text-gradient-primary block"></span> */}
           </h2>
-          <p className="subtitle-text max-w-4xl mx-auto">
+          <p className="subtitle-text max-w-2xl mx-auto">
             Transform your procurement process with AI-powered automation, global vendor networks, and guaranteed results.
           </p>
         </div>
@@ -90,7 +60,7 @@ const SolutionSection = () => {
           })}
         </div>
         
-        <div className="text-center mt-20">
+        {/* <div className="text-center mt-20">
           <div className="inline-flex items-center px-10 py-6 bg-gradient-secondary rounded-2xl shadow-xl border border-border">
             <Sparkles className="h-8 w-8 mr-4 text-accent" />
             <div className="text-left">
@@ -98,7 +68,7 @@ const SolutionSection = () => {
               <div className="text-muted-foreground mt-1">Paste a product URL → Get instant price estimates</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

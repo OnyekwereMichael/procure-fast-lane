@@ -1,36 +1,9 @@
 import { Quote, Star, Building2, Users, Award } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { testimonials } from "@/lib/constants/dummy";
 
 const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      quote: "We saved 28% in just our first project. The process was seamless and the vendor quality exceeded our expectations.",
-      author: "Sarah Johnson",
-      title: "Head of Procurement",
-      company: "TechCorp Industries",
-      logo: "TC",
-      savings: "28%",
-      timeframe: "First project"
-    },
-    {
-      quote: "The 48-hour turnaround is a game-changer. What used to take us 6 weeks now happens in 2 days.",
-      author: "Michael Chen",
-      title: "Supply Chain Director",
-      company: "Global Manufacturing Co.",
-      logo: "GM",
-      savings: "35%",
-      timeframe: "Q1 2024"
-    },
-    {
-      quote: "Their vendor verification process gives us complete confidence. Zero quality issues in 12 months.",
-      author: "Emma Rodriguez",
-      title: "Chief Procurement Officer",
-      company: "Enterprise Solutions Ltd.",
-      logo: "ES",
-      savings: "22%",
-      timeframe: "Annual review"
-    }
-  ];
+  
 
   const companies = [
     { name: "TechCorp", logo: "TC" },

@@ -1,33 +1,9 @@
-import { AlertCircle, Clock, DollarSign, FileX, ShieldX } from "lucide-react";
+import { problems } from "@/lib/constants/dummy";
+import { AlertCircle } from "lucide-react";
+
 
 const ProblemSection = () => {
-  const problems = [
-    {
-      icon: ShieldX,
-      title: "Fragmented Vendor Ecosystem",
-      description: "Hard to verify credibility and compliance across multiple suppliers."
-    },
-    {
-      icon: Clock,
-      title: "Time-Consuming Negotiations",
-      description: "Weeks of back-and-forth communications delay critical procurement."
-    },
-    {
-      icon: DollarSign,
-      title: "Lack of Market Intelligence",
-      description: "No real-time pricing data leads to overspending and poor decisions."
-    },
-    {
-      icon: AlertCircle,
-      title: "Operational Bottlenecks",
-      description: "Delays in procurement cycles create downstream operational issues."
-    },
-    {
-      icon: FileX,
-      title: "Limited Transparency",
-      description: "Poor visibility into processes frustrates management and stakeholders."
-    }
-  ];
+
 
   return (
     <section className="section-padding bg-gradient-subtle animate-fade-in">
@@ -38,10 +14,10 @@ const ProblemSection = () => {
             <span className="text-destructive font-medium">Critical Business Challenges</span>
           </div>
           <h2 className="section-title text-foreground mb-6">
-            The Corporate Procurement 
-            <span className="text-gradient-primary block">Challenge</span>
+            The Corporate Procurement Challenge
+            {/* <span className="text-gradient-primary block">Challenge</span> */}
           </h2>
-          <p className="subtitle-text max-w-4xl mx-auto">
+          <p className="subtitle-text max-w-2xl mx-auto">
             Traditional procurement processes are broken. Here's what's costing your business time and money.
           </p>
         </div>
@@ -50,15 +26,15 @@ const ProblemSection = () => {
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
-              <div key={index} className="bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-elegant group">
+              <div key={index} className="bg-card border border-gray rounded-3xl p-8  hover:shadow-xl transition-elegant group">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:bg-destructive/20 transition-elegant">
-                    <Icon className="h-10 w-10 text-destructive" />
+                  <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:bg-destructive/20 transition-elegant">
+                    <Icon className="h-8 w-8 text-destructive" />
                   </div>
                   <h3 className="card-title text-foreground mb-4">
                     {problem.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-[15px] leading-relaxed">
                     {problem.description}
                   </p>
                 </div>
