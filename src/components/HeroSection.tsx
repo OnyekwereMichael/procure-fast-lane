@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 md:pt-28">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-16 md:pt-28 max-sm:pt-0">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1)_0%,transparent_50%)]"></div>
@@ -51,17 +51,17 @@ const HeroSection = () => {
           </div>
           
           {/* Executive Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-16 border-t border-white/20 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 pt-16 border-t border-white/20 mb-10 max-sm:mb-0">
             <div className="text-center group">
-              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant">48h</div>
+              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant max-sm:text-3xl">48h</div>
               <div className="text-white/80 font-medium">Turnaround Guarantee</div>
             </div>
             <div className="text-center group">
-              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant">30%</div>
+              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant max-sm:text-3xl">30%</div>
               <div className="text-white/80 font-medium">Average Cost Savings</div>
             </div>
             <div className="text-center group">
-              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant">1000+</div>
+              <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-105 transition-elegant max-sm:text-3xl">1000+</div>
               <div className="text-white/80 font-medium">Certified Vendors</div>
             </div>
           </div>

@@ -16,12 +16,12 @@ const SolutionSection = () => {
   return (
     <section className=" bg-background animate-fade-in">
       <div className="container-custom">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 max-sm:mb-8">
           <div className="inline-flex items-center px-6 py-3 bg-gradient-primary text-white rounded-full mb-8 shadow-lg">
             <Sparkles className="h-5 w-5 mr-2" />
             <span className="font-semibold">Your Procurement Co-Pilot</span>
           </div>
-          <h2 className="section-title text-foreground mb-6">
+          <h2 className="section-title text-foreground mb-6 max-sm:mb-4">
             The Complete Procurement Solution
             {/* <span className="text-gradient-primary block"></span> */}
           </h2>

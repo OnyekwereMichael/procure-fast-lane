@@ -29,23 +29,23 @@ const DifferentiatorsSection = () => {
           {differentiators.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={index} className="bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-elegant group">
+              <div key={index} className="bg-card border border-border rounded-3xl p-8 shadow-lg hover:shadow-xl transition-elegant group max-sm:p-6">
                 <div className="flex items-start space-x-8">
                   <div className="flex-shrink-0">
-                    <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center group-hover:shadow-glow transition-elegant shadow-lg`}>
-                      <Icon className="h-8 w-8 text-white" />
+                    <div className={`w-16 h-16 max-sm:w-14 max-sm:h-14 rounded-2xl ${item.color} flex items-center justify-center group-hover:shadow-glow transition-elegant shadow-lg`}>
+                      <Icon className="h-8 w-8 max-sm:w-6 max-sm:h-6 text-white" />
                     </div>
                   </div>
                   <div className="flex-1">
                     <h3 className="card-title text-foreground mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-5">
+                    <p className="text-muted-foreground leading-relaxed mb-5 max-sm:text-[15px]">
                       {item.description}
                     </p>
                     <div className="inline-flex items-center px-4 py-2 bg-accent/10 rounded-xl border border-accent/20">
                       <Target className="h-5 w-5 text-accent mr-2" />
-                      <span className="text-accent text-[15px] font-medium">
+                      <span className="text-accent text-[15px] font-medium max-sm:text-[14px]">
                         {item.highlight}
                       </span>
                     </div>

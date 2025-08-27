@@ -54,33 +54,53 @@ const BenefitsSection = () => {
         </div>
         
         {/* Executive ROI Showcase */}
-        <div className="bg-gradient-primary rounded-3xl p-12 lg:p-16 text-white text-center shadow-2xl">
-          <div className="max-w-5xl mx-auto">
-            <h3 className="text-5xl lg:text-3xl font-bold mb-10">
-              Average ROI in First Quarter
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-10">
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-accent mb-4 group-hover:scale-105 transition-elegant">285%</div>
-                <div className="text-primary-foreground/90 text-lg font-medium">Return on Investment</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-accent mb-4 group-hover:scale-105 transition-elegant">$2.3M</div>
-                <div className="text-primary-foreground/90 text-lg font-medium">Average Annual Savings</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-accent mb-4 group-hover:scale-105 transition-elegant">3.2x</div>
-                <div className="text-primary-foreground/90 text-lg font-medium">Productivity Increase</div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-2xl py-4 px-8">
-              <TrendingDown className="h-6 w-6 mr-3" />
-              <span className="text-lg font-semibold">
-                Based on analysis of 500+ enterprise implementations
-              </span>
-            </div>
-          </div>
+        <div className="bg-gradient-primary rounded-3xl p-8 sm:p-12 lg:p-16 text-white text-center shadow-2xl">
+  <div className="max-w-5xl mx-auto">
+    {/* Title */}
+    <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-8 sm:mb-10 leading-snug">
+      Average ROI in First Quarter
+    </h3>
+
+    {/* Stats Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-10">
+      <div className="text-center group">
+        <div className="text-3xl sm:text-4xl font-bold text-accent mb-3 sm:mb-4 group-hover:scale-105 transition-transform duration-300">
+          285%
         </div>
+        <div className="text-primary-foreground/90 text-base sm:text-lg font-medium">
+          Return on Investment
+        </div>
+      </div>
+
+      <div className="text-center group">
+        <div className="text-3xl sm:text-4xl font-bold text-accent mb-3 sm:mb-4 group-hover:scale-105 transition-transform duration-300">
+          $2.3M
+        </div>
+        <div className="text-primary-foreground/90 text-base sm:text-lg font-medium">
+          Average Annual Savings
+        </div>
+      </div>
+
+      <div className="text-center group">
+        <div className="text-3xl sm:text-4xl font-bold text-accent mb-3 sm:mb-4 group-hover:scale-105 transition-transform duration-300">
+          3.2x
+        </div>
+        <div className="text-primary-foreground/90 text-base sm:text-lg font-medium">
+          Productivity Increase
+        </div>
+      </div>
+    </div>
+
+    {/* Footer Note */}
+    <div className="flex flex-col sm:flex-row items-center justify-center bg-white/10 backdrop-blur-sm rounded-2xl py-3 px-6 sm:py-4 sm:px-8 space-y-2 sm:space-y-0 sm:space-x-3">
+      <TrendingDown className="h-5 w-5 sm:h-6 sm:w-6" />
+      <span className="text-sm sm:text-lg font-semibold">
+        Based on analysis of 500+ enterprise implementations
+      </span>
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );
