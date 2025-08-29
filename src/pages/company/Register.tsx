@@ -63,9 +63,48 @@ const CompanyRegister = () => {
   };
 
   if (isSuccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-subtle px-4">
-        <Card className="w-full max-w-md animate-fade-in">
+  return (
+    <div className="min-h-screen flex bg-background">
+      {/* Left Side - Welcome Content */}
+      <div className="hidden lg:flex lg:w-1/2 bg-primary text-primary-foreground p-12 flex-col justify-center">
+        <div className="max-w-md mx-auto">
+          <h1 className="text-4xl font-bold mb-6">Setup Your Company</h1>
+          <p className="text-lg mb-8 opacity-90">
+            You're the first from your organization! Set up your company profile 
+            and become the Company Admin to start inviting your team.
+          </p>
+          
+          <div className="space-y-6">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Company Admin privileges</h3>
+                <p className="text-sm opacity-75">Full control over roles, users, and company settings</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Invite team members</h3>
+                <p className="text-sm opacity-75">Add colleagues and assign roles for collaboration</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Customize workflows</h3>
+                <p className="text-sm opacity-75">Set up approval processes that match your organization</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <Card className="w-full max-w-md animate-fade-in border-0 shadow-lg">
           <CardHeader className="text-center">
             <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
               <CheckCircle className="w-8 h-8 text-green-600" />
@@ -95,9 +134,10 @@ const CompanyRegister = () => {
             >
               Go to Admin Dashboard
             </Button>
-          </CardContent>
+        </CardContent>
         </Card>
       </div>
+    </div>
     );
   }
 

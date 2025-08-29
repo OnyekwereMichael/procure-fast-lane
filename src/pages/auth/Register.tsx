@@ -136,8 +136,55 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-subtle px-4">
-      <Card className="w-full max-w-md animate-fade-in">
+    <div className="min-h-screen flex bg-background">
+      {/* Left Side - Welcome Content */}
+      <div className="hidden lg:flex lg:w-1/2 bg-primary text-primary-foreground p-12 flex-col justify-center">
+        <div className="max-w-md mx-auto">
+          <h1 className="text-4xl font-bold mb-6">Welcome to Our Platform</h1>
+          <p className="text-lg mb-8 opacity-90">
+            Join your team's requirements management platform with personalized access, 
+            instant collaboration, and expert guidance.
+          </p>
+          
+          <div className="space-y-6">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Create and manage requirements in minutes</h3>
+                <p className="text-sm opacity-75">Streamlined workflow for requirement creation</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Secure team collaboration</h3>
+                <p className="text-sm opacity-75">Invite team members with role-based access control</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Flexible approval workflows</h3>
+                <p className="text-sm opacity-75">Customizable approval processes for your organization</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 p-4 bg-primary-foreground/10 rounded-lg">
+            <p className="text-sm italic">
+              "This platform made it incredibly easy to manage our requirements. 
+              The experience was smooth, and everything just worked."
+            </p>
+            <p className="text-xs mt-2 opacity-75">– Sarah, Product Manager</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <Card className="w-full max-w-md animate-fade-in border-0 shadow-lg">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Button
@@ -283,7 +330,8 @@ const Register = () => {
             </div>
           </form>
         </CardContent>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 };

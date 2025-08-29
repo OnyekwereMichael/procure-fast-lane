@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Eye, EyeOff, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { Eye, EyeOff, ArrowLeft, AlertTriangle, CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Login = () => {
@@ -66,8 +66,47 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-subtle px-4">
-      <Card className="w-full max-w-md animate-fade-in">
+    <div className="min-h-screen flex bg-background">
+      {/* Left Side - Welcome Content */}
+      <div className="hidden lg:flex lg:w-1/2 bg-primary text-primary-foreground p-12 flex-col justify-center">
+        <div className="max-w-md mx-auto">
+          <h1 className="text-4xl font-bold mb-6">Welcome Back</h1>
+          <p className="text-lg mb-8 opacity-90">
+            Sign in to your requirements management platform to continue 
+            collaborating with your team and managing projects.
+          </p>
+          
+          <div className="space-y-6">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Access your dashboard</h3>
+                <p className="text-sm opacity-75">View and manage all your requirements in one place</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Team collaboration</h3>
+                <p className="text-sm opacity-75">Work together with your team members seamlessly</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
+              <div>
+                <h3 className="font-semibold mb-1">Real-time updates</h3>
+                <p className="text-sm opacity-75">Stay informed with instant notifications and updates</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+        <Card className="w-full max-w-md animate-fade-in border-0 shadow-lg">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Button
@@ -175,7 +214,8 @@ const Login = () => {
             </div>
           </div>
         </CardContent>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 };
