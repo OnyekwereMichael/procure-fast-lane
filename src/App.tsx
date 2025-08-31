@@ -13,6 +13,7 @@ import Verify from "./pages/auth/Verify";
 import Forgot from "./pages/auth/Forgot";
 import Reset from "./pages/auth/Reset";
 import PendingApproval from "./pages/auth/PendingApproval";
+import RegisterCompany from './pages/auth/RegisterCompany'
 
 // Company Pages
 import CompanyRegister from "./pages/company/Register";
@@ -22,6 +23,7 @@ import InviteAccept from "./pages/invite/Accept";
 import CompanyAdminLayout from "./pages/company-admin/Layout";
 import Roles from "./pages/company-admin/Roles";
 import Users from "./pages/company-admin/Users";
+import RegisterUnderCompany from "./pages/auth/RegisteredUnderCompany";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
           <Route path="/auth/forgot" element={<Forgot />} />
           <Route path="/auth/reset" element={<Reset />} />
           <Route path="/auth/pending-approval" element={<PendingApproval />} />
+          <Route path="/auth/register-company" element={<RegisterCompany />} />
+          <Route path="/auth/register-under-company" element={<RegisterUnderCompany />} />
           
           {/* Company Routes */}
           <Route path="/company/register" element={<CompanyRegister />} />

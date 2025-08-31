@@ -1,335 +1,243 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Eye, EyeOff, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Eye, EyeOff, CheckCircle, XCircle, ArrowLeft } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { CreateUserAccount } from "@/lib/query";
+import { registerValidationSchema } from "@/lib/validation";
 
-const BLOCKED_DOMAINS = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'aol.com'];
 
 const Register = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    fullName: ''
-  });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-  // Password strength calculation
-  const calculatePasswordStrength = (password: string) => {
-    let score = 0;
-    if (password.length >= 8) score++;
-    if (/[A-Z]/.test(password)) score++;
-    if (/[a-z]/.test(password)) score++;
-    if (/[0-9]/.test(password)) score++;
-    if (/[^A-Za-z0-9]/.test(password)) score++;
-    return score;
-  };
+  const { mutate, isPending } = CreateUserAccount();
 
-  const passwordStrength = calculatePasswordStrength(formData.password);
-  const strengthLabels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
-  const strengthColors = ['bg-destructive', 'bg-red-400', 'bg-yellow-400', 'bg-blue-400', 'bg-green-500'];
-
-  const validateEmail = (email: string) => {
-    const domain = email.split('@')[1]?.toLowerCase();
-    if (BLOCKED_DOMAINS.includes(domain)) {
-      return 'Please use your corporate email.';
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return 'Please enter a valid email address.';
-    }
-    return '';
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    
-    // Clear specific errors on change
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required.';
-    }
-
-    const emailError = validateEmail(formData.email);
-    if (emailError) {
-      newErrors.email = emailError;
-    }
-
-    if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long.';
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match.';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitted(true);
-      }, 1000);
-    }
-  };
-
-  const handleResendVerification = () => {
-    // Simulate resend API call
-    console.log('Resending verification email...');
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-subtle px-4">
-        <Card className="w-full max-w-md animate-fade-in">
-          <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-              <CheckCircle className="w-6 h-6 text-green-600" />
-            </div>
-            <CardTitle>Check Your Email</CardTitle>
-            <CardDescription>
-              We've sent a verification link to<br />
-              <span className="font-medium text-foreground">{formData.email}</span>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground text-center">
-              Click the link in your email to verify your account and continue with registration.
-            </p>
-            <Button 
-              variant="outline" 
-              className="w-full"
-              onClick={handleResendVerification}
-            >
-              Resend Verification Email
-            </Button>
-            <Button 
-              variant="ghost" 
-              className="w-full"
-              onClick={() => navigate('/auth/login')}
-            >
-              Back to Login
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      password_confirmation: "",
+    },
+    validationSchema: registerValidationSchema,
+    onSubmit: (values) => {
+      mutate(values);
+    },
+  });
 
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Left Side - Welcome Content */}
+    <div className="h-screen flex bg-background">
+      {/* Left side */}
       <div className="hidden lg:flex lg:w-1/2 bg-primary text-primary-foreground p-12 flex-col justify-center">
-        <div className="max-w-md mx-auto">
-          <h1 className="text-4xl font-bold mb-6">Welcome to Our Platform</h1>
+        <div className=" mx-auto">
+          <h1 className="text-4xl font-bold mb-6">Welcome Back</h1>
           <p className="text-lg mb-8 opacity-90">
-            Join your team's requirements management platform with personalized access, 
-            instant collaboration, and expert guidance.
+            Sign in to your requirements management platform to continue 
+            collaborating with your team and managing projects.
           </p>
           
           <div className="space-y-6">
             <div className="flex items-start gap-3">
               <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
               <div>
-                <h3 className="font-semibold mb-1">Create and manage requirements in minutes</h3>
-                <p className="text-sm opacity-75">Streamlined workflow for requirement creation</p>
+                <h3 className="font-semibold mb-1">Access your dashboard</h3>
+                <p className="text-sm opacity-75">View and manage all your requirements in one place</p>
               </div>
             </div>
             
             <div className="flex items-start gap-3">
               <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
               <div>
-                <h3 className="font-semibold mb-1">Secure team collaboration</h3>
-                <p className="text-sm opacity-75">Invite team members with role-based access control</p>
+                <h3 className="font-semibold mb-1">Team collaboration</h3>
+                <p className="text-sm opacity-75">Work together with your team members seamlessly</p>
               </div>
             </div>
             
             <div className="flex items-start gap-3">
               <CheckCircle className="w-5 h-5 mt-1 text-primary-foreground/80" />
               <div>
-                <h3 className="font-semibold mb-1">Flexible approval workflows</h3>
-                <p className="text-sm opacity-75">Customizable approval processes for your organization</p>
+                <h3 className="font-semibold mb-1">Real-time updates</h3>
+                <p className="text-sm opacity-75">Stay informed with instant notifications and updates</p>
               </div>
             </div>
-          </div>
-
-          <div className="mt-8 p-4 bg-primary-foreground/10 rounded-lg">
-            <p className="text-sm italic">
-              "This platform made it incredibly easy to manage our requirements. 
-              The experience was smooth, and everything just worked."
-            </p>
-            <p className="text-xs mt-2 opacity-75">– Sarah, Product Manager</p>
           </div>
         </div>
       </div>
 
-      {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
-        <Card className="w-full max-w-md animate-fade-in border-0 shadow-lg">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate('/')}
-              className="h-8 w-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </Button>
-            <div>
-              <CardTitle>Create Account</CardTitle>
-              <CardDescription>Join your team's requirements management platform</CardDescription>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input
-                id="fullName"
-                type="text"
-                value={formData.fullName}
-                onChange={(e) => handleInputChange('fullName', e.target.value)}
-                className={cn(errors.fullName && 'border-destructive')}
-                placeholder="Enter your full name"
-              />
-              {errors.fullName && (
-                <p className="text-sm text-destructive flex items-center gap-1">
-                  <XCircle className="w-3 h-3" />
-                  {errors.fullName}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Corporate Email</Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
-                className={cn(errors.email && 'border-destructive')}
-                placeholder="Enter your corporate email"
-              />
-              {errors.email && (
-                <p className="text-sm text-destructive flex items-center gap-1">
-                  <XCircle className="w-3 h-3" />
-                  {errors.email}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
-                  className={cn(errors.password && 'border-destructive', 'pr-10')}
-                  placeholder="Create a strong password"
-                />
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-0 top-0 h-full px-3"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </Button>
+      {/* Right side */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 overflow-y-auto">
+        <Card className="w-full  shadow-none animate-fade-in border-none mt-10">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => navigate("/")}
+                className="h-10 w-10 rounded-full bg-gray-100 hover:bg-gray-200"
+              >
+                <ArrowLeft className="w-5 h-5 text-gray-700" />
+              </Button>
+              <div>
+                <CardTitle className="mb-1 text-[20px]">Create Account</CardTitle>
+                <CardDescription>
+                  Join your team's requirements management platform
+                </CardDescription>
               </div>
-              
-              {/* Password Strength Meter */}
-              {formData.password && (
-                <div className="space-y-1">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className={cn(
-                          'h-1 flex-1 rounded-full transition-colors',
-                          i < passwordStrength ? strengthColors[passwordStrength - 1] : 'bg-muted'
-                        )}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    Strength: {strengthLabels[passwordStrength - 1] || 'Very Weak'}
+            </div>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={formik.handleSubmit} className="space-y-4">
+              {/* Full Name */}
+              <div className="space-y-2">
+                <Label htmlFor="fullName">Name</Label>
+                <Input
+                  id="name"
+                  {...formik.getFieldProps("name")}
+                  className={cn(
+                    formik.touched.name && formik.errors.name && "border-destructive"
+                  )}
+                  placeholder="Enter your name"
+                />
+                {formik.touched.name && formik.errors.name && (
+                  <p className="text-sm text-destructive flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    {formik.errors.name}
                   </p>
-                </div>
-              )}
-              
-              {errors.password && (
-                <p className="text-sm text-destructive flex items-center gap-1">
-                  <XCircle className="w-3 h-3" />
-                  {errors.password}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <div className="relative">
-                <Input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  value={formData.confirmPassword}
-                  onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                  className={cn(errors.confirmPassword && 'border-destructive', 'pr-10')}
-                  placeholder="Confirm your password"
-                />
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-0 top-0 h-full px-3"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </Button>
+                )}
               </div>
-              {errors.confirmPassword && (
-                <p className="text-sm text-destructive flex items-center gap-1">
-                  <XCircle className="w-3 h-3" />
-                  {errors.confirmPassword}
-                </p>
-              )}
-            </div>
 
-            <Button type="submit" className="w-full">
-              Create Account
-            </Button>
+              {/* Email */}
+              <div className="space-y-2">
+                <Label htmlFor="email">Corporate Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  {...formik.getFieldProps("email")}
+                  className={cn(
+                    formik.touched.email && formik.errors.email && "border-destructive"
+                  )}
+                  placeholder="Enter your corporate email"
+                />
+                {formik.touched.email && formik.errors.email && (
+                  <p className="text-sm text-destructive flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    {formik.errors.email}
+                  </p>
+                )}
+              </div>
 
-            <div className="text-center text-sm">
-              <span className="text-muted-foreground">Already have an account? </span>
-              <Link to="/auth/login" className="text-primary hover:underline font-medium">
-                Sign in
-              </Link>
-            </div>
-          </form>
-        </CardContent>
+              {/* Phone */}
+              <div className="space-y-2">
+                <Label htmlFor="phone">Phone</Label>
+                <Input
+                  id="phone"
+                  {...formik.getFieldProps("phone")}
+                  className={cn(
+                    formik.touched.phone && formik.errors.phone && "border-destructive"
+                  )}
+                  placeholder="Enter your phone number"
+                />
+                {formik.touched.phone && formik.errors.phone && (
+                  <p className="text-sm text-destructive flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    {formik.errors.phone}
+                  </p>
+                )}
+              </div>
+
+              {/* Password */}
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    {...formik.getFieldProps("password")}
+                    className={cn(
+                      formik.touched.password && formik.errors.password && "border-destructive",
+                      "pr-10"
+                    )}
+                    placeholder="Create a strong password"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-0 top-0 h-full px-3"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+                {formik.touched.password && formik.errors.password && (
+                  <p className="text-sm text-destructive flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    {formik.errors.password}
+                  </p>
+                )}
+              </div>
+
+              {/* Confirm Password */}
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <div className="relative">
+                  <Input
+                    id="password_confirmation"
+                    type={showConfirmPassword ? "text" : "password"}
+                    {...formik.getFieldProps("password_confirmation")}
+                    className={cn(
+                      formik.touched.password_confirmation &&
+                        formik.errors.password_confirmation &&
+                        "border-destructive",
+                      "pr-10"
+                    )}
+                    placeholder="Confirm your password"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-0 top-0 h-full px-3"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+                {formik.touched.password_confirmation && formik.errors.password_confirmation && (
+                  <p className="text-sm text-destructive flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    {formik.errors.password_confirmation}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit */}
+              <Button type="submit" className="w-full" disabled={isPending}>
+                {isPending ? "Creating..." : "Create Account"}
+              </Button>
+
+              <div className="text-center text-sm">
+                <span className="text-muted-foreground">Already have an account? </span>
+                <Link to="/auth/login" className="text-primary hover:underline font-medium">
+                  Sign in
+                </Link>
+              </div>
+            </form>
+          </CardContent>
         </Card>
       </div>
     </div>

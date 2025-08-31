@@ -68,7 +68,7 @@ const Navbar = () => {
           {/* Desktop CTA */}
           <div className="hidden md:block">
             <Button className="btn-primary">
-              Get Started
+              <a href="/auth/register">Get Started</a>
             </Button>
           </div>
 

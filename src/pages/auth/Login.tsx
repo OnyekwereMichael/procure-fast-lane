@@ -106,7 +106,7 @@ const Login = () => {
 
       {/* Right Side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
-        <Card className="w-full max-w-md animate-fade-in border-0 shadow-lg">
+        <Card className="w-full animate-fade-in border-0 shadow-">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Button
