@@ -3,12 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Switch } from '@/components/ui/switch';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Plus, Edit, Trash2, Shield, Users } from 'lucide-react';
+import CreateRoleForm from '@/components/CreateRoleForm';
 
 const Roles = () => {
   const [roles] = useState([
@@ -28,6 +25,14 @@ const Roles = () => {
     }
   ]);
 
+  const [showCreateForm, setShowCreateForm] = useState(false);
+
+  const handleCreateRole = (roleData: any) => {
+    console.log('Creating role:', roleData);
+    // Handle role creation logic here
+    setShowCreateForm(false);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -35,19 +40,18 @@ const Roles = () => {
           <h1 className="text-3xl font-bold">Role Management</h1>
           <p className="text-muted-foreground">Create and manage roles for your team</p>
         </div>
-        <Dialog>
+        <Dialog open={showCreateForm} onOpenChange={setShowCreateForm}>
           <DialogTrigger asChild>
             <Button>
               <Plus className="w-4 h-4 mr-2" />
               Create Role
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>Create New Role</DialogTitle>
-              <DialogDescription>Define permissions and settings for the new role</DialogDescription>
-            </DialogHeader>
-            {/* Role creation form would go here */}
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <CreateRoleForm 
+              onClose={() => setShowCreateForm(false)}
+              onSubmit={handleCreateRole}
+            />
           </DialogContent>
         </Dialog>
       </div>

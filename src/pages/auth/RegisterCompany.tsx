@@ -17,16 +17,16 @@ const RegisterCompany = () => {
     phone: ''
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     setErrors((prev) => ({ ...prev, [field]: '' })); // clear error on change
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let newErrors = {};
+    let newErrors: {[key: string]: string} = {};
 
     if (!formData.BusinessName) newErrors.BusinessName = "Business name is required";
     if (!formData.address) newErrors.address = "Address is required";

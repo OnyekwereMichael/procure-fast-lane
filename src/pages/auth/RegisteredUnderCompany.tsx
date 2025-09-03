@@ -15,16 +15,16 @@ const RegisterUnderCompany = () => {
     customRole: ''
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     setErrors((prev) => ({ ...prev, [field]: '' })); // clear error on change
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let newErrors = {};
+    let newErrors: {[key: string]: string} = {};
 
     if (!formData.role) newErrors.role = "Please select a role";
     if (!formData.customRole) newErrors.customRole = "Please enter your role";
