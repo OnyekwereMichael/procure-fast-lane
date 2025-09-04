@@ -25,6 +25,14 @@ import Roles from "./pages/company-admin/Roles";
 import Users from "./pages/company-admin/Users";
 import RegisterUnderCompany from "./pages/auth/RegisteredUnderCompany";
 
+// User Dashboard Pages
+import DashboardLayout from "./pages/dashboard/Layout";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Requests from "./pages/dashboard/Requests";
+import Suppliers from "./pages/dashboard/Suppliers";
+import Analytics from "./pages/dashboard/Analytics";
+import Orders from "./pages/dashboard/Orders";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -54,6 +62,15 @@ const App = () => (
           <Route path="/company-admin" element={<CompanyAdminLayout />}>
             <Route path="roles" element={<Roles />} />
             <Route path="users" element={<Users />} />
+          </Route>
+
+          {/* User Dashboard Routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="requests" element={<Requests />} />
+            <Route path="suppliers" element={<Suppliers />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="analytics" element={<Analytics />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
